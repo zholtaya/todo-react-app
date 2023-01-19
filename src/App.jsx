@@ -10,6 +10,7 @@ const App = () => {
 
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
+        setTodos(JSON.parse(localStorage.getItem("todos")));
     }, [todos]);
 
     return (
@@ -17,7 +18,12 @@ const App = () => {
             <TodoHeader setTodos={setTodos} />
             <div className="all_todos">
                 {
-                    todos.map((todo) => {
+                    !todos.length && (
+                        <h2>У вас пока нет задач</h2>
+                    )
+                }
+                {
+                    todos && todos.map((todo) => {
                         return (
                             <TodoItem key={todo.id} setTodos={setTodos} todo={todo} />
                         )
