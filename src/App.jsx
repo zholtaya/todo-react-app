@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TodoHeader from "./components/TodoHeader";
 import TodoItem from "./components/TodoItem";
 
-const initialTodos = JSON.parse(localStorage.getItem("todos"));
+const initialTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
 const App = () => {
 
