@@ -70,3 +70,19 @@ body{
   border: 1px solid #fff;
   color: #fff;
 }
+
+.addForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.addButton {
+  padding: 13px 20px;
+  background-color: #222223;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  cursor: pointer;
+}

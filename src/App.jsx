@@ -2,25 +2,15 @@ import { useState, useEffect } from "react";
 import TodoHeader from "./components/TodoHeader";
 import TodoItem from "./components/TodoItem";
 
-const initialTodos = [
-    {
-        id: 1,
-        name: "Купить продукты",
-        date: new Date(),
-        checked: false
-    },
-    {
-        id: 2,
-        name: "Заправить автомобиль",
-        date: new Date(),
-        checked: false
-    }
-];
+const initialTodos = JSON.parse(localStorage.getItem("todos"));
 
 const App = () => {
 
     const [todos, setTodos] = useState(initialTodos);
 
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
 
     return (
         <div className="layout">
@@ -29,7 +19,7 @@ const App = () => {
                 {
                     todos.map((todo) => {
                         return (
-                            <TodoItem setTodos={setTodos} todo={todo} />
+                            <TodoItem key={todo.id} setTodos={setTodos} todo={todo} />
                         )
                     })
                 }

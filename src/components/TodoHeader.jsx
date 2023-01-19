@@ -11,6 +11,11 @@ const TodoHeader = ({ setTodos }) => {
         event.preventDefault();
 
         // add todos
+
+        if (value.length < 3) {
+            return;
+        }
+
         setTodos((prevState) => {
             prevState = [...prevState];
 
@@ -29,12 +34,15 @@ const TodoHeader = ({ setTodos }) => {
         <div>
             <form onSubmit={(e) => onSubmitHandle(e)} className="form_add">
                 <h2>Добавить задачу:</h2>
-                <input type="text"
-                    placeholder="Купить молоко..."
-                    onChange={(e) => onChangeHandle(e)}
-                    value={value}
-                    className="add_input_style"
-                />
+                <div className="addForm">
+                    <input type="text"
+                        placeholder="Купить молоко..."
+                        onChange={(e) => onChangeHandle(e)}
+                        value={value}
+                        className="add_input_style"
+                    />
+                    <button onClick={onSubmitHandle} className="addButton">Добавить</button>
+                </div>
             </form>
         </div>
     );
